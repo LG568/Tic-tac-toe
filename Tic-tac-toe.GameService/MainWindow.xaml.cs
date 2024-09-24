@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Tic_tac_toe.GameService;
 
 namespace Tic_tac_toe
 {
@@ -18,8 +19,8 @@ namespace Tic_tac_toe
     public partial class MainWindow : Window
     {
         TextBox[] fieldsList = new TextBox[9];
-        private string _fieldsWithX;
-        private string _fieldsWithO;
+        private string _fieldsWithX = "";
+        private string _fieldsWithO = "";
         public MainWindow()
         {
             InitializeComponent();
@@ -37,7 +38,7 @@ namespace Tic_tac_toe
         
         private void BtnStartGame_Click(object sender, RoutedEventArgs e)
         {
-            Game game = new Game();
+            var game = new Game();
             game.ClearGameField(fieldsList);
             TxtBox_Player.Text = "Player 1";
             TxtBox_Player.Visibility = Visibility.Visible;
@@ -60,7 +61,7 @@ namespace Tic_tac_toe
                     bool isWinO = false;
                     char fieldNumber = field.Name[field.Name.Length - 1];
 
-                    Game game = new Game();
+                    var game = new Game();
 
                     field.Text = game.MakeAMove(TxtBox_Player.Text);
                     field.Foreground = game.SetMarkColor(TxtBox_Player.Text);

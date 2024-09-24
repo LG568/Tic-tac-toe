@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
 
-namespace Tic_tac_toe
+namespace Tic_tac_toe.GameService
 {
     public class Game
     {
