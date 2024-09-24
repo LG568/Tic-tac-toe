@@ -1,4 +1,4 @@
-name: build and test
+name: build and test and release
 
 on:
   push:
@@ -21,7 +21,7 @@ jobs:
           dotnet-version: 8.x
 
       - name: Compile solution for test
-        run: dotnet build
+        run: dotnet build -c Debug
 
       - name: Test solution
         run: dotnet test
@@ -35,7 +35,10 @@ jobs:
     - name: Compile solution for release
       run: dotnet build -c Release /p:Version=${{ github.ref_name }}
 
-    - name: release
+    - name: Create release zip
+      run: 7z a Tic_tac_toe_${{ github.ref_name }}.zip .\Tic-tac-toe.GameService\bin\Release\net8.0-windows\*
+
+    - name: Create Release
       uses: actions/create-release@v1
       id: create_release
       with:
@@ -46,3 +49,13 @@ jobs:
         body_path: CHANGELOG.md
       env:
         GITHUB_TOKEN: ${{ secrets.github_token }}
+
+    - name: Upload compiled game
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.github_token }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: Tic_tac_toe_${{ github.ref_name }}.zip
+        asset_name: Tic_tac_toe_${{ github.ref_name }}.zip
+        asset_content_type: application/gzip
