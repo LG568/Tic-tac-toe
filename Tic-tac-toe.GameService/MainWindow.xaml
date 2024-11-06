@@ -22,6 +22,10 @@
         <TextBox HorizontalAlignment="Left" Height="20" Margin="580,215,0,0" TextWrapping="Wrap" Text="Instructions" VerticalAlignment="Top" Width="170" FontWeight="Bold" IsReadOnly="True" BorderThickness="1,1,1,0"/>
         <TextBox HorizontalAlignment="Left" Height="40" Margin="580,235,0,0" TextWrapping="Wrap" Text="Double click on the grid to put your mark." VerticalAlignment="Top" Width="170" IsReadOnly="True" BorderThickness="1,0,1,0"/>
         <TextBox HorizontalAlignment="Left" Height="40" Margin="580,275,0,0" TextWrapping="Wrap" Text="The first player with three marks in a row wins the game." VerticalAlignment="Top" Width="170" IsReadOnly="True" BorderThickness="1,0,1,1"/>
+        <StackPanel HorizontalAlignment="Left" Height="77" Margin="624,102,0,0" VerticalAlignment="Top" Width="126">
+            <RadioButton x:Name="OnePlayer_RadioBtn" Content="One player" Height="37" Width="104"/>
+            <RadioButton x:Name="TwoPlayers_RadioBtn" Content="Two players" Height="37" Width="104"/>
+        </StackPanel>
 
     </Grid>
 </Window>
