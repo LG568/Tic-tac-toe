@@ -38,16 +38,22 @@ namespace Tic_tac_toe
         
         private void BtnStartGame_Click(object sender, RoutedEventArgs e)
         {
-            var game = new Game();
-            game.ClearGameField(fieldsList);
-            TxtBox_Player.Text = "Player 1";
-            TxtBox_Player.Visibility = Visibility.Visible;
-            TxtBox_MakeyourMove.Visibility = Visibility.Visible;
-            foreach( TextBox field in fieldsList)
-                field.Visibility = Visibility.Visible;
+            if (OnePlayer_RadioBtn.IsChecked == false &&
+                TwoPlayers_RadioBtn.IsChecked == false)
+                MessageBox.Show("Please, choose how many players are playing.");
+            else
+            {
+                var game = new Game();
+                game.ClearGameField(fieldsList);
+                TxtBox_Player.Text = "Player 1";
+                TxtBox_Player.Visibility = Visibility.Visible;
+                TxtBox_MakeyourMove.Visibility = Visibility.Visible;
+                foreach (TextBox field in fieldsList)
+                    field.Visibility = Visibility.Visible;
 
-            _fieldsWithX = "";
-            _fieldsWithO = "";
+                _fieldsWithX = "";
+                _fieldsWithO = "";
+            }
         }
 
         private void PlaceAMark_Click(object sender, MouseButtonEventArgs e)
